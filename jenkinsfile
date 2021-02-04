@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Execute ET') {
+            steps {
+                // Start ET
+                startET toolName: 'Kevin', workspaceDir: 'C:\\ECU_TEST_Workspace\\C_ECU-TEST_Tools'
+
+                // Run pkg
+                testPackage testConfig: [constants: [], forceReload: false, keepConfig: false, loadOnly: false, tbcFile: 'C:\\ECU_TEST_Workspace\\C_ECU-TEST_Tools\\Configurations\\Tools\\CANoe_1224.tbc', tcfFile: 'C:\\ECU_TEST_Workspace\\C_ECU-TEST_Tools\\Configurations\\Tools\\CANoe_1224.tcf'], testFile: 'C:\\ECU_TEST_Workspace\\C_ECU-TEST_Tools\\Packages\\TOOLS\\CANoe_1224.pkg'
+                
+                // Generate Report
+                publishTRF()
+                
+                // Stop ET
+                stopET 'Kevin'
+            }
+        }
+    }
+}
