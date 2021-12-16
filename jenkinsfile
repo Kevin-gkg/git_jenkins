@@ -19,7 +19,7 @@ pipeline {
                 publishTRF()
                 
                 // Stop ET
-                //stopET 'Kevin'
+                stopET 'Kevin'
             }
         }
     }
