@@ -10,16 +10,16 @@ pipeline {
         stage('Execute ET') {
             steps {
                 // Start ET
-                startET toolName: 'Kevin', workspaceDir: 'C:\\1_ECU_TEST_Workspace\\ET_2020.4\\C_ECU-TEST_Tools'
+                startET toolName: 'ECU-TEST 2021.4', workspaceDir: 'C:\\1_ECU_TEST_Workspace\\ET_2021.4\\NEW'
 
                 // Run pkg
-                testPackage testConfig: [constants: [], forceReload: false, keepConfig: false, loadOnly: false, tbcFile: 'C:\\1_ECU_TEST_Workspace\\ET_2020.4\\C_ECU-TEST_Tools\\Configurations\\Tools\\CANoe_1224.tbc', tcfFile: 'C:\\1_ECU_TEST_Workspace\\ET_2020.4\\C_ECU-TEST_Tools\\Configurations\\Tools\\CANoe_1224.tcf'], testFile: 'C:\\1_ECU_TEST_Workspace\\ET_2020.4\\C_ECU-TEST_Tools\\Packages\\TOOLS\\CANoe_1224.pkg'
+                testPackage testConfig: [constants: [], forceReload: false, keepConfig: false, loadOnly: false, tbcFile: 'C:\\1_ECU_TEST_Workspace\\ET_2021.4\\NEW\\Configurations\\Testlab_HiL.tbc', tcfFile: 'C:\\1_ECU_TEST_Workspace\\ET_2021.4\\NEW\\Configurations\\SW_Ver_1.tcf'], testFile: '${PKG_Name}'
                 
                 // Generate Report
                 publishTRF()
                 
                 // Stop ET
-                //stopET 'Kevin'
+                //stopET 'ECU-TEST 2021.4'
             }
         }
     }
