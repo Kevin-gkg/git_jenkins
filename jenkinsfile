@@ -19,7 +19,7 @@ pipeline {
                 publishTRF()
                 
                 // Stop ET
-                //stopET 'ECU-TEST 2021.4'
+                stopET 'ECU-TEST 2021.4'
             }
         }
     }
